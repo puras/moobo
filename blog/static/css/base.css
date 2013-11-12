@@ -1,0 +1,109 @@
+@charset "utf-8";
+
+* {
+	margin: 0;
+	font-family: Microsoft YaHei;
+}
+html {
+    overflow-y: scroll;
+}
+html,body {
+	background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #F6F8F8!important;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    color: #4C4C4C;
+    font-family: 'Open Sans',sans-serif ,Microsoft YaHei;
+    font-size: 15px;
+    line-height: 25px;
+}
+body {
+	background: #fff;
+	font-size: 12px;
+	color: #424242;
+	line-height: 20px;
+	overflow: hidden;
+}
+ul, li {
+	list-style: none;
+	height: auto;
+	padding: 0;
+	margin: 0;
+	border: none;
+	list-style: none;
+	display: block;
+}
+img {
+	border: none;
+}
+form {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+div {
+	height: auto;
+	overflow: hidden;
+}
+a {
+	color: #0078c8;
+	text-decoration: none!important;
+}	
+input{
+	font-family: Microsoft YaHei;	
+}
+.content, .wrapper, div {
+	magin: 0;
+	padding: 0;
+}
+ul, ol {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin: 0;
+}
+ul, ol {
+    padding: 0;
+}
+img {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-bottom-color: -moz-use-text-color;
+    border-bottom-style: none;
+    border-bottom-width: 0;
+    border-image-outset: 0 0 0 0;
+    border-image-repeat: stretch stretch;
+    border-image-slice: 100% 100% 100% 100%;
+    border-image-source: none;
+    border-image-width: 1 1 1 1;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: -moz-use-text-color;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: none;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: 0;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: -moz-use-text-color;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: none;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: 0;
+    border-top-color: -moz-use-text-color;
+    border-top-style: none;
+    border-top-width: 0;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}

@@ -1,0 +1,29 @@
+.box {
+    background-color: #FFFFFF;
+    border-color: #DDDDDD;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: none;
+    margin: 0 -15px 15px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10px;
+    position: relative;
+}
+
+.box-title {
+    font-size: 18px;
+    color: #cccccc;
+    padding: 5px;
+}
+
+.topic {
+    padding: 0;
+    margin: 2px;
+}
+
+.topic-title {
+    font-size: 14px;
+    color: #222288;
+}

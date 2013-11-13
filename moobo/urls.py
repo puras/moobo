@@ -11,8 +11,8 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'moobo.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^$', index),
-    url(r'^bbs/$', include('bbs.urls', namespace='bbs')),
+    url(r'^$', index, name='bbs'),
+    url(r'^bbs/', include('bbs.urls', namespace='bbs')),
     # url(r'^blog/$', include(blog.urls, namespace='blog')),
     url(r'^admin/', include(admin.site.urls)),
 )

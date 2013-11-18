@@ -67,3 +67,24 @@ def join(req):
 
     # req.session.set_test_cookie()
     # return render(req, 'join.html')
+
+def change_password(req):
+    if req.method == 'POST':
+        old_passwd = req.POST.get('old_passwd', '')
+        passwd = req.POST.get('passwd', '')
+        repasswd = req.POST.get('repasswd', '')
+        if not passwd == repasswd:
+            # 传递错误信息,新密码与确认新密码不同
+            return render(req, 'password.html', { 'error': None })
+        user = req.user
+        test_user = auth.authenticate(username = user.username, password = old_passwd)
+        if test_user is not None:
+            user.set_password(passwd)
+            user.save()
+            return logout(req)
+        else:
+            # 传递错误信息，原密码不符
+            return render(req, 'password.html')
+
+    else:
+        return render(req, 'password.html')

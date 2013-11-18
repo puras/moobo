@@ -1,53 +1,56 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>MooBo-BBS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% load staticfiles %}
-    <link href="{% static 'css/lib/bootstrap.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/lib/bootstrap-theme.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-</head>
-<body>
-    <div class="header">
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="{% url 'bbs' %}" class="navbar-brand">MOOBO</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="{% url 'bbs' %}">首页</a></li>
-                        <li><a href="#">发布主题</a></li>
-                        {% if user.is_authenticated %}
-                        <li><a href="javascript:void(0);">欢迎您， {{ user.username }}</a></li>
-                        <li><a href="{% url 'bbs:password' %}">修改密码</a></li>
-                        <li><a href="{% url 'bbs:logout' %}">注销</a></li>
-                        {% else %}
-                        <li><a href="{% url 'bbs:login' %}">登录</a></li>
-                        <li><a href="{% url 'bbs:join' %}">注册</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="" name="description">
+        <meta content="" name="author">
+        <title>index</title>
+        {% load staticfiles %}
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="{% static 'css/lib/bootstrap.css' %}">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="{% static 'css/lib/bootstrap-theme.css' %}">
+
+        <!-- style CSS -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    </head>
+    <body>
+    <header>
+      <nav class="navbar navbar-fixed-top">
+        <div class="navbar-inner"> <a href="{% url 'bbs' %}" class="brand"><span>MOOBO</span> </a>
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'bbs' %}">首页</a></li>
+            <li><a href="#">发布主题</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li><a href="javascript:void(0);">欢迎您， {{ user.username }}</a></li>
+            <li><a href="{% url 'bbs:password' %}">修改密码</a></li>
+            <li><a href="{% url 'bbs:logout' %}">注销</a></li>
+            {% else %}
+            <li><a href="{% url 'bbs:login' %}">登录</a></li>
+            <li><a href="{% url 'bbs:join' %}">注册</a></li>
+            {% endif %}
+          </ul>
         </div>
-    </div>
-    
+      </nav>
+    </header>
+
     {% block body %}
     {% endblock %}
-    
-    <div class="footer">
-        <div class="container">
-            <p class="text-muted credit">本论坛使用Python开发,使用的Django框架;前端页面样式使用的Bootstrap.</p>
-            <p class="text-muted credit">程序开发:<a href="mailto:hegq@neusoft.com">Puras.He</a> | 页面开发:<a href="mailto:xue_zhang@neusoft.com">张雪</a></p>
-        </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit"> 本论坛使用Python开发,使用django框架,前端页面样式使用bootstrap</p> 
+        <p class="text-muted credit">程序开发: <a href="#">Parus.He</a> | 页面开发: <a href="#">张雪</a> . </p>
+      </div>
     </div>
-</body>
+    <!-- Latest compiled and minified JavaScript --> 
+    <script src="{% static 'js/lib/jquery-1.10.2.min.js' %}"></script> 
+    <script src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+    </body>
 </html>

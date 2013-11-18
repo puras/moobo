@@ -3,56 +3,36 @@
 {% load staticfiles %}
 
 {% block body %}
-<div class="wrap">
-        <div class="container">
-            <div class="row wrap-container">
-                <div class="col-md-8 wrap-main">
-                    <div class="box">
-                        {% block content %}
-                        {% endblock %}  
-                    </div>
+<section class="container-fluid">
+    <div class="container">
+        <div class="row"> 
+            <!--左侧商品展示区-->
+            <div class="col-md-8" role="main">
+                <div class="box">
+                    {% block content %}
+                    {% endblock %}
                 </div>
-                <div class="col-md-4 wrap-left">
-                    <div class="box">
-                        hello<br />
-                        hello<br />
-                        hello<br />
-                        hello<br />
-                        hello<br />
+            </div>
+            <!--右侧商品展示区-->
+            <div class="col-md-4">
+                <div class="box highlight">
+                    <a href="#" class="news_lg" style="max-height:300px; max-width:360px"></a>
+                </div>
+       
+                <div class="box">
+                    <div class="inner tab_title"> <a href="/?tab=tech">最新主题</a></div>
+                    <div class="cell">
+                        <a class="user" href="#" style="max-height:24px; max-width:24px"></a><a href="/t/89617">windows下你必定会用到的快捷键?</a>
                     </div>
-                    <div class="box">
-                        <div class="box-title">最新主题</div>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td width="48px;"><img src="{% static 'img/pet.png' %}"></td>
-                                    <td style="padding: 0; margin: 0;">
-                                        <table cellpadding="0" cellspacing="0" style="padding: 0; margin: 0;">
-                                            <tbody>
-                                                <tr style="padding: 0; margin: 0;">
-                                                    <td style="padding: 0; margin: 0;"><span class="topic-title">主题标题主题标题主题标题主题标题主题标题</span></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="48px;"><img src="{% static 'img/pet.png' %}"></td>
-                                    <td style="padding: 0; margin: 0;">
-                                        <table cellpadding="0" cellspacing="0" style="padding: 0; margin: 0;">
-                                            <tbody>
-                                                <tr style="padding: 0; margin: 0;">
-                                                    <td style="padding: 0; margin: 0;"><span class="topic-title">主题标题主题标题主题标题主题标题主题标题</span></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="cell">
+                        <a class="user" href="#" style="max-height:24px; max-width:24px"></a><a href="/t/89617">windows下你必定会用到的快捷键?</a>
+                    </div>
+                    <div class="cell">
+                        <a class="user" href="#" style="max-height:24px; max-width:24px"></a><a href="/t/89617">windows下你必定会用到的快捷键?</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
 {% endblock %}

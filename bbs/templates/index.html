@@ -3,39 +3,17 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="box-title">最新主题</div>
-<table class="table">
-    <tbody>
+<div class="inner tab_title"> <a href="/?tab=tech">最新主题</a></div>
 {% if lastest_topic_list %}
     {% for topic in lastest_topic_list %}
-        <tr>
-            <td width="48px;"><img src="{% static 'img/pet.png' %}"></td>
-            <td style="padding: 0; margin: 0;">
-                <table cellpadding="0" cellspacing="0" style="padding: 0; margin: 0;">
-                    <tbody>
-                        <tr style="padding: 0; margin: 0;">
-                            <td style="padding: 0; margin: 0;"><a href="{% url 'bbs:topic' topic.id %}"><span class="topic-title">{{topic.title}}</span></a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <table border="1">
-                                    <tbody>
-                                        <tr>
-                                            <td><small>{{topic.node.name}}</small></td>
-                                            <td><small>创建人</small></td>
-                                            <td><small>{{topic.pub_date}}</small></td>
-                                            <td><small>最后回复人</small></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
+        <div class="cell item"> 
+            <span class="user"></span><h5><a href="{% url 'bbs:topic' topic.id %}">{{topic.title}}</a></h5>
+            <div class="info">
+                <a class="node" href="/go/programmer">{{topic.node.name}}</a>
+                <strong><a href="#">kailiu</a></strong> {{topic.pub_date}} 最后回复来自
+                <strong><a href="/member/Mutoo">Mutoo</a></strong>
+            </div>
+        </div>
     {% endfor %}
 {% endif %}
-    </tbody>
-</table>
 {% endblock %}

@@ -1,0 +1,127 @@
+@charset "utf-8";
+/* CSS Document */
+body > header {
+    margin-bottom: 3em;
+}
+.container-fluid:before, .container-fluid:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.container-fluid:after {
+    clear: both;
+}
+.container-fluid:before, .container-fluid:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+body > section.container-fluid {
+    height:auto;
+    min-height: 100%;
+    margin-bottom: -2em;
+    padding: 2em 0;
+}
+.navbar-inner{
+    background-color: #F9F9F9;
+    background-image: linear-gradient(to bottom, #FFFFFF, #F2F2F2);
+    background-repeat: repeat-x;
+    border-bottom:1px solid #D4D4D4;
+    min-height: 40px;
+}
+.brand {
+    color: #049CDB;
+    margin-left: 40px;
+    position: relative;
+    font-family: "orbitron-bold";
+}
+.navbar .brand {
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-weight: 200;
+    padding-bottom: 9px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 4px;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+.navbar .brand span{
+    line-height: 37px;  
+}
+.navbar-search {
+    margin: 5px 1em 0 0;
+    position: relative;
+}
+.pull-right {
+    float: right;
+}
+.navbar-search {
+    margin-bottom: 0;
+    margin-top: 5px;
+    position: relative;
+}
+.navbar-header span > a:hover,.navbar-nav > li > a:hover{
+    color: #333!important;
+}
+#home_things:before, #home_things:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.inner {
+    background-color: #F9F9F9;
+    font-size: 12px;
+    line-height: 150%;
+    padding: 10px;
+    text-align: left;
+}
+.tab_title{
+    border-bottom: 2px solid #E2E2E9;
+}
+.box{
+    background: #fff;
+    border-radius: 3px;
+    border-bottom: 2px solid #E2E2E9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+.item {
+    background: url(../img/bg_item.png) repeat-x;
+}
+.cell {
+    border-bottom: 1px solid #E2E2E2;
+    font-size: 12px;
+    line-height: 120%;
+    padding: 10px;
+    text-align: left;
+}
+.user{
+    background: url(../img/use.png) no-repeat;
+    height: 48px;
+    width: 48px;
+    float: left;
+    border-radius: 6px;
+    margin-right: 8px;
+}
+.node{
+    color: #999999;
+}
+.info{
+    font-size:12px; 
+    color: #B4B4B4;
+}
+.info a{
+    margin-right: 10px
+}
+.news_lg{
+    background: url(../img/sendcloud.jpg) no-repeat;
+    float:left;
+    width: 500px;
+    height: 500px;
+}
+.highlight{
+    margin-bottom: 20px;    
+}
+.cell a{
+    line-height:24px    
+}

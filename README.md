@@ -1,4 +1,4 @@
 MooBo
 =====
 
-基于Django开发的个人Blog及BBS系统。
+使用Python的Django框架开发，前端页面使用Bootstrap和jQuery。

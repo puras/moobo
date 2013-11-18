@@ -29,7 +29,6 @@
                         {% if user.is_authenticated %}
                         <li><a href="javascript:void(0);">欢迎您， {{ user.username }}</a></li>
                         <li><a href="{% url 'bbs:logout' %}">注销</a></li>
-                        <li><a href="{% url 'bbs:join' %}">注册</a></li>
                         {% else %}
                         <li><a href="{% url 'bbs:login' %}">登录</a></li>
                         <li><a href="{% url 'bbs:join' %}">注册</a></li>
@@ -45,7 +44,8 @@
     
     <div class="footer">
         <div class="container">
-            <p class="text-muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+            <p class="text-muted credit">本论坛使用Python开发,使用的Django框架;前端页面样式使用的Bootstrap.</p>
+            <p class="text-muted credit">程序开发:<a href="mailto:hegq@neusoft.com">Puras.He</a> | 页面开发:<a href="mailto:xue_zhang@neusoft.com">张雪</a></p>
         </div>
     </div>
 </body>

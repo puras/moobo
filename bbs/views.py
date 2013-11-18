@@ -9,17 +9,41 @@ from django import forms
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 
+from datetime import datetime
+
 from bbs.models import Topic, Node, Category
 
 # Create your views here.
 def index(req):
     lastest_topic_list = Topic.objects.order_by('-pub_date')[:20]
-    context = { 'lastest_topic_list': lastest_topic_list }
-    return render(req, 'index.html', context)
+    category_list = Category.objects.all()
+    return render(req, 'index.html', {
+        'lastest_topic_list': lastest_topic_list,
+        'category_list': category_list,
+        })
 
 def topic(req, topic_id):
     topic = get_object_or_404(Topic, pk = topic_id)
     return render(req, 'topic.html', {'topic': topic})
+
+def topic_create(req):
+    if req.method == 'POST':
+        title = req.POST.get('title', '')
+        content = req.POST.get('content', '')
+        category_id = req.POST.get('category_id', '')
+        node_id = req.POST.get('node_id')
+        tp = Topic.objects.create(
+            title = title,
+            content = content,
+            author = req.user,
+            category = Category.objects.get(pk = category_id),
+            node = Node.objects.get(pk = node_id),
+            pub_date = datetime.now(),
+        )
+        tp.save()
+        return topic(req, tp.id)
+    else:
+        return render(req, 'topic/create.html')
 
 def login(req):
     if req.method == 'POST':

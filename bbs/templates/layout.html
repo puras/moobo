@@ -24,7 +24,7 @@
         <div class="navbar-inner"> <a href="{% url 'bbs' %}" class="brand"><span>MOOBO</span> </a>
           <ul class="nav navbar-nav">
             <li><a href="{% url 'bbs' %}">首页</a></li>
-            <li><a href="#">发布主题</a></li>
+            <li><a href="{% url 'bbs:topic_create' %}">发布主题</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}

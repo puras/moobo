@@ -30,6 +30,7 @@ class Topic(models.Model):
     content = models.TextField('内容')
     author = models.ForeignKey(User)
     node = models.ForeignKey(Node)
+    category = models.ForeignKey(Category)
     pub_date = models.DateTimeField('发布时间')
 
     class Meta:

@@ -16,4 +16,16 @@
         </div>
     {% endfor %}
 {% endif %}
+
+{% if category_list %}
+    {% for cate in category_list %}
+        <b>{{cate.name}}</b>----
+        {% if cate.node_set.all %}
+            {% for node in cate.node_set.all %}
+                {{node.name}}|
+            {% endfor %}
+        {% endif %}
+        <hr />
+    {% endfor %}
+{% endif %}
 {% endblock %}

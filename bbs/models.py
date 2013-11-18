@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'puras'
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
@@ -27,6 +28,7 @@ class Node(models.Model):
 class Topic(models.Model):
     title = models.CharField(max_length=1024, verbose_name='标题')
     content = models.TextField('内容')
+    author = models.ForeignKey(User)
     node = models.ForeignKey(Node)
     pub_date = models.DateTimeField('发布时间')
 

@@ -27,23 +27,39 @@ def topic(req, topic_id):
     return render(req, 'topic.html', {'topic': topic})
 
 def topic_create(req):
-    if req.method == 'POST':
-        title = req.POST.get('title', '')
-        content = req.POST.get('content', '')
-        category_id = req.POST.get('category_id', '')
-        node_id = req.POST.get('node_id')
-        tp = Topic.objects.create(
-            title = title,
-            content = content,
-            author = req.user,
-            category = Category.objects.get(pk = category_id),
-            node = Node.objects.get(pk = node_id),
-            pub_date = datetime.now(),
-        )
-        tp.save()
-        return topic(req, tp.id)
-    else:
-        return render(req, 'topic/create.html')
+    category_id = req.POST.get('category_id', '')
+    node_id = req.POST.get('node_id', '')
+    return render(req, 'topic/create.html', {
+        'category_id': category_id,
+        'node_id': node_id
+        })
+
+def topic_save(req):
+    # if req.method == 'POST':
+    title = req.POST.get('title', '')
+    content = req.POST.get('content', '')
+    category_id = req.POST.get('category_id', '')
+    node_id = req.POST.get('node_id')
+    tp = Topic.objects.create(
+        title = title,
+        content = content,
+        author = req.user,
+        category = Category.objects.get(pk = category_id),
+        node = Node.objects.get(pk = node_id),
+        pub_date = datetime.now(),
+    )
+    tp.save()
+    return topic(req, tp.id)
+    # else:
+    #     return render(req, 'topic/create.html')
+
+def node(req, node_id):
+    node = get_object_or_404(Node, pk = node_id)
+    topic_list = Topic.objects.filter(node_id = node_id)[:20]
+    return render(req, 'node.html', { 
+        'node': node,
+        'topic_list': topic_list
+    })
 
 def login(req):
     if req.method == 'POST':

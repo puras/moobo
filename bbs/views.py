@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 from datetime import datetime
 
-from bbs.models import Topic, Node, Category
+from bbs.models import Topic, Node, Category, Reply
 
 # Create your views here.
 def index(req):
@@ -53,6 +53,20 @@ def topic_save(req):
     return HttpResponseRedirect(reverse('bbs:topic', args = (tp.id, )))
     # else:
     #     return render(req, 'topic/create.html')
+
+def topic_reply(req, topic_id):
+    topic = get_object_or_404(Topic, pk = topic_id)
+    content = req.POST.get('content', '')
+    # topic_id = req.POST.get('topic_id')
+    re = Reply.objects.create(
+        content = content,
+        topic = topic,
+        author = req.user,
+        pub_date = datetime.now(),
+    )
+    re.save()
+    return HttpResponseRedirect(reverse('bbs:topic', args = (topic_id, )))
+
 
 def node(req, node_id):
     node = get_object_or_404(Node, pk = node_id)

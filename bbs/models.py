@@ -40,7 +40,19 @@ class Topic(models.Model):
     def __unicode__(self):
         return self.title
 
+    def last_reply(self):
+        print type(self.reply_set.all)
+
     # def save(self, *args, **kwargs):
     #     import markdown
     #     self.content = markdown.markdown(self.content)
     #     super(Topic, self).save(*args, **kwargs)
+
+class Reply(models.Model):
+    content = models.TextField('内容')
+    topic = models.ForeignKey(Topic)
+    author = models.ForeignKey(User)
+    pub_date = models.DateTimeField('发布时间')
+
+    def __unicode__(self):
+        return self.content

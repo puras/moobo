@@ -13,7 +13,7 @@
                 <div class="info">
                     <a class="node" href="{% url 'bbs:node' topic.node.id %}">{{topic.node.name}}</a>
                     <strong><a href="#">{{topic.author.username}}</a></strong> {{topic.pub_date}} 最后回复来自
-                    <!-- <strong><a href="/member/Mutoo">Mutoo</a></strong> -->
+                    <strong><a href="#">{{topic.last_reply}}</a></strong>
                 </div>
             </div>
         {% endfor %}
@@ -27,10 +27,10 @@
             <div class="cell">
                 <b>{{cate.name}}</b>->
                  {% if cate.node_set.all %}
-                {% for node in cate.node_set.all %}
+                    {% for node in cate.node_set.all %}
                     <a href="{% url 'bbs:node' node.id %}">{{node.name}}</a>|
-                {% endfor %}
-            {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
         {% endfor %}
     {% endif %}

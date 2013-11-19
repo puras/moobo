@@ -41,4 +41,39 @@
         </tr>
     </tbody>
 </table>
+<br />
+<div class="box-title">回复</div>
+{% if topic.reply_set.all %}
+    {% for reply in topic.reply_set.all %}
+        <div class="cell item"> 
+            <span class="user"></span><h5>{{reply.author.username}}说:</h5>
+            <div class="info">
+                回复时间: {{reply.pub_date}}
+            </div>
+            <h5>{{reply.content|md}}</h5>
+        </div>
+    {% endfor %}
+{% endif %}
+{% if user.is_authenticated %}
+<form action="{% url 'bbs:topic_reply' topic.id %}" method="POST">
+    {% csrf_token %}
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <textarea id="content" name="content" cols="100" rows="10" placeholder="回复内容"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" />
+                    <input type="hidden" id="topic_id" name="topic_id" value="{{topic.id}}" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+{% else %}
+<h4>请先<a href="{% url 'bbs:login' %}">登录</a>或<a href="{% url 'bbs:join' %}">注册</a>后再进行回复</h4>
+{% endif %}
 {% endblock %}

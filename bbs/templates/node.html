@@ -5,12 +5,14 @@
 {% block content %}
 <div class="inner tab_title"><a href="{% url 'bbs' %}">MOOBO</a> &gt; <a href="javascript:void(0)">{{node.name}}</a></div>
 <br />
+{% if user.is_authenticated %}
 <form action="{% url 'bbs:topic_create' %}" method="post">
     {% csrf_token %}
     <input type="hidden" id="category_id" name="category_id" value="{{node.category.id}}" />
     <input type="hidden" id="node_id" name="node_id" value="{{node.id}}" />
     <input type="submit" value="发布主题" />
 </form>
+{% endif %}
 <hr />
 
 {% if topic_list %}

@@ -13,7 +13,7 @@
                 <div class="info">
                     <a class="node" href="{% url 'bbs:node' topic.node.id %}">{{topic.node.name}}</a>
                     <strong><a href="#">{{topic.author.username}}</a></strong> {{topic.pub_date}} 最后回复来自
-                    <strong><a href="#">{{topic.last_reply}}</a></strong>
+                    <strong><a href="#">{{topic.last_reply.author.username}}</a></strong>
                 </div>
             </div>
         {% endfor %}

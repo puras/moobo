@@ -41,7 +41,11 @@ class Topic(models.Model):
         return self.title
 
     def last_reply(self):
-        print type(self.reply_set.all)
+        reply = self.reply_set.all().order_by('-pub_date')[:1]
+        if reply:
+            return reply[0]
+        else:
+            return None
 
     # def save(self, *args, **kwargs):
     #     import markdown

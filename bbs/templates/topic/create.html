@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="inner tab_title">发布新主题</div>
+<form action="{% url 'bbs:topic_save' %}" method="POST">
+{% csrf_token %}
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <input type="text" id="title" name="title" placeholder="主题标题" size="100" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea id="content" name="content" cols="100" rows="30" placeholder="主题内容"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" />
+                <input type="hidden" id="category_id" name="category_id" value="{{category_id}}" />
+                <input type="hidden" id="node_id" name="node_id" value="{{node_id}}" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+</form>
+{% endblock %}

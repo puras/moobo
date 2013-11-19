@@ -3,11 +3,18 @@
 {% load staticfiles %}
 
 {% block content %}
+<div class="inner tab_title"><a href="{% url 'bbs' %}">MooBo</a> &gt; <a href="javascript:void(0)">{{node.name}}</a></div>
+<br />
+<form action="{% url 'bbs:topic_create' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" id="category_id" name="category_id" value="{{node.category.id}}" />
+    <input type="hidden" id="node_id" name="node_id" value="{{node.id}}" />
+    <input type="submit" value="发布主题" />
+</form>
+<hr />
 
-<div class="inner tab_title"> <a href="javascript:void(0)">最新主题</a></div>
->>>>>>> 7db444e67d193c4c496b93ac6ce3ef0c9715480f
-{% if lastest_topic_list %}
-    {% for topic in lastest_topic_list %}
+{% if topic_list %}
+    {% for topic in topic_list %}
         <div class="cell item"> 
             <span class="user"></span><h5><a href="{% url 'bbs:topic' topic.id %}">{{topic.title}}</a></h5>
             <div class="info">
@@ -16,19 +23,6 @@
                 <strong><a href="/member/Mutoo">Mutoo</a></strong>
             </div>
         </div>
-    {% endfor %}
-{% endif %}
-
-{% if category_list %}
-    {% for cate in category_list %}
-        <b>{{cate.name}}</b>----
-        {% if cate.node_set.all %}
-            {% for node in cate.node_set.all %}
-                <a href="{% url 'bbs:node' node.id %}">{{node.name}}</a>
-                |
-            {% endfor %}
-        {% endif %}
-        <hr />
     {% endfor %}
 {% endif %}
 {% endblock %}

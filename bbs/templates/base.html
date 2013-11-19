@@ -7,21 +7,39 @@
     <div class="container">
         <div class="row"> 
             <!--左侧商品展示区-->
-            <div class="col-md-8" role="main">
+            <div class="col-md-9" role="main">
                 <div class="box">
                     {% block content %}
                     {% endblock %}
                 </div>
             </div>
             <!--右侧商品展示区-->
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="box highlight">
-                    <a href="#" class="news_lg" style="max-height:300px; max-width:360px"></a>
+                    <div class="cell"> 
+                        {% if user.is_authenticated %}
+                        <a href="#" class="user" style="max-height:48px; max-width:48px;"></a>
+                        <h4><a href="#" class="user_name">{{ user.username }}</a></h4>
+                        {% else %}
+                        <div class="tab_title"> <a href="javascript:void(0)">MooBo</a></div>
+                        <a href="{% url 'bbs:login' %}">登录</a> | <a href="{% url 'bbs:join' %}">注册</a>
+                        {% endif %}
+                        
+                        <!-- <div class="main">
+                            <p class="dark"> <span class="bigger">0</span> <span>节点收藏</span> </p>
+                            <p class="dark"> <span class="bigger">0</span> <span>主题收藏</span> </p>
+                            <p class="dark"> <span class="bigger">0</span> <span>特别关注</span> </p>
+                        </div> -->
+                    </div>
+                    <!-- <div class="inner">
+                        <div id="money" class="fr"> <a class="balance_area" href="#"> 0 <span></span></a> </div>
+                        <a href="#" style="line-height:30px">0 条未读提醒</a> 
+                    </div> -->
                 </div>
        
                 <div class="box">
-                    <div class="inner tab_title"> <a href="/?tab=tech">最新主题</a></div>
-                    <div class="cell">
+                    <div class="inner tab_title"> <a href="/?tab=tech">热议主题</a></div>
+                   <!--  <div class="cell">
                         <a class="user" href="#" style="max-height:24px; max-width:24px"></a><a href="/t/89617">windows下你必定会用到的快捷键?</a>
                     </div>
                     <div class="cell">
@@ -29,7 +47,7 @@
                     </div>
                     <div class="cell">
                         <a class="user" href="#" style="max-height:24px; max-width:24px"></a><a href="/t/89617">windows下你必定会用到的快捷键?</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

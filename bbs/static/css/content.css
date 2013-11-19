@@ -125,3 +125,73 @@ body > section.container-fluid {
 .cell a{
     line-height:24px    
 }
+.member{
+    background: url(../img/member.png) no-repeat;
+    height: 73px;
+    width: 73px;
+    float: left
+}
+.user_name{
+    line-height: 63px;
+    margin: 10px 0 20px 10px;
+    display: inline-block;
+}
+.dark{
+    border-right: 1px solid #808080;
+    -moz-text-decoration-color: -moz-use-text-color;
+    -moz-text-decoration-line: none;
+    -moz-text-decoration-style: solid;
+    color: #808080;
+    text-align: center;
+    display: inline-block;
+    padding:0 10px;
+}
+.bigger{
+    display:block;
+    margin-bottom: 5px;
+}
+.main{
+    margin: 10px 0 10px 5px;    
+}
+.fr {
+    float: right;
+    text-align: right;
+}
+.balance_area span{
+    background: url(../img/bronze.png) no-repeat;
+    height: 16px;
+    width: 16px;
+    float: right;
+    margin: 0 5px;
+}
+a.balance_area:link, a.balance_area:visited, .balance_area {
+    -moz-text-decoration-color: -moz-use-text-color;
+    -moz-text-decoration-line: none;
+    -moz-text-decoration-style: solid;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: -moz-linear-gradient(center top , #F5F5F5 0%, #E2E2E2 100%);
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    border-radius: 20px;
+    color: #666666;
+    display: inline-block;
+    font-size: 11px;
+    line-height: 16px;
+    padding: 5px 10px;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+a.balance_area:hover{
+    color: #000;
+}
+
+
+
+
+
+
+
+

@@ -3,7 +3,7 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="inner tab_title"><a href="{% url 'bbs' %}">MooBo</a> &gt; <a href="javascript:void(0)">{{node.name}}</a></div>
+<div class="inner tab_title"><a href="{% url 'bbs' %}">MOOBO</a> &gt; <a href="javascript:void(0)">{{node.name}}</a></div>
 <br />
 <form action="{% url 'bbs:topic_create' %}" method="post">
     {% csrf_token %}

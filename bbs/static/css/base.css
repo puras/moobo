@@ -33,13 +33,13 @@ body {
     line-height: 100%;
 }
 ul, li {
-    list-style: none;
+    /*list-style: none;
     height: auto;
     padding: 0;
     margin: 0;
     border: none;
     list-style: none;
-    display: block;
+    display: block;*/
 }
 form {
     margin: 0;
@@ -62,11 +62,11 @@ input{
     padding: 0;
 }
 ul, ol {
-    list-style-image: none;
+   /* list-style-image: none;
     list-style-position: outside;
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 0;*/
 }
 img {
     -moz-border-bottom-colors: none;

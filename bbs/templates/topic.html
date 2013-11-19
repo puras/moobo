@@ -3,7 +3,7 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="box-title"><a href="{% url 'bbs' %}">MooBo</a> > {{ topic.node.name }}</div>
+<div class="box-title"><a href="{% url 'bbs' %}">MOOBO</a> > <a href="{% url 'bbs:node' topic.node.id %}">{{ topic.node.name }}</a></div>
 <table>
     <tbody>
         <tr>
@@ -30,7 +30,11 @@
                             </td>
                         </tr>
                         <tr/>
-                            <td>{{topic.content}}</td>
+                            <td>
+                                {% autoescape off %} 
+                                    {{topic.content}}
+                                {% endautoescape %}
+                            </td>
                         </tr>
                     </tbody>
                 </table>

@@ -55,7 +55,7 @@ def topic_save(req):
 
 def node(req, node_id):
     node = get_object_or_404(Node, pk = node_id)
-    topic_list = Topic.objects.filter(node_id = node_id)[:20]
+    topic_list = Topic.objects.order_by('-pub_date').filter(node_id = node_id)[:20]
     return render(req, 'node.html', { 
         'node': node,
         'topic_list': topic_list

@@ -4,30 +4,36 @@
 
 {% block content %}
 
-<div class="inner tab_title"> <a href="javascript:void(0)">最新主题</a></div>
-{% if lastest_topic_list %}
-    {% for topic in lastest_topic_list %}
-        <div class="cell item"> 
-            <span class="user"></span><h5><a href="{% url 'bbs:topic' topic.id %}">{{topic.title}}</a></h5>
-            <div class="info">
-                <a class="node" href="/go/programmer">{{topic.node.name}}</a>
-                <strong><a href="#">{{topic.author.username}}</a></strong> {{topic.pub_date}} 最后回复来自
-                <strong><a href="/member/Mutoo">Mutoo</a></strong>
+<div class="box">
+    <div class="inner tab_title"> <a href="javascript:void(0)">最新主题</a></div>
+    {% if lastest_topic_list %}
+        {% for topic in lastest_topic_list %}
+            <div class="cell item"> 
+                <span class="user"></span><h5><a href="{% url 'bbs:topic' topic.id %}">{{topic.title}}</a></h5>
+                <div class="info">
+                    <a class="node" href="/go/programmer">{{topic.node.name}}</a>
+                    <strong><a href="#">{{topic.author.username}}</a></strong> {{topic.pub_date}} 最后回复来自
+                    <strong><a href="/member/Mutoo">Mutoo</a></strong>
+                </div>
             </div>
-        </div>
-    {% endfor %}
-{% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+<br />
+<div class="box">
+    <div class="inner tab_title"> <a href="javascript:void(0)">节点列表</a></div>
+    {% if category_list %}
+        {% for cate in category_list %}
+            <div class="cell">
+                <b>{{cate.name}}</b>->
+                 {% if cate.node_set.all %}
+                {% for node in cate.node_set.all %}
+                    <a href="{% url 'bbs:node' node.id %}">{{node.name}}</a>|
+                {% endfor %}
+            {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
 
-{% if category_list %}
-    {% for cate in category_list %}
-        <b>{{cate.name}}</b>----
-        {% if cate.node_set.all %}
-            {% for node in cate.node_set.all %}
-                <a href="{% url 'bbs:node' node.id %}">{{node.name}}</a>
-                |
-            {% endfor %}
-        {% endif %}
-        <hr />
-    {% endfor %}
-{% endif %}
 {% endblock %}

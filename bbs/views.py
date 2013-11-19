@@ -49,7 +49,8 @@ def topic_save(req):
         pub_date = datetime.now(),
     )
     tp.save()
-    return topic(req, tp.id)
+    # return topic(req, tp.id)
+    return HttpResponseRedirect(reverse('bbs:topic', args = (tp.id, )))
     # else:
     #     return render(req, 'topic/create.html')
 

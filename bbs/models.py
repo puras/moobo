@@ -40,7 +40,7 @@ class Topic(models.Model):
     def __unicode__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        import markdown
-        self.content = markdown.markdown(self.content)
-        super(Topic, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     import markdown
+    #     self.content = markdown.markdown(self.content)
+    #     super(Topic, self).save(*args, **kwargs)

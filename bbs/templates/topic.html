@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load staticfiles %}
+{% load moobo_tags %}
 
 {% block content %}
 <div class="box-title"><a href="{% url 'bbs' %}">MOOBO</a> > <a href="{% url 'bbs:node' topic.node.id %}">{{ topic.node.name }}</a></div>
@@ -31,9 +32,7 @@
                         </tr>
                         <tr/>
                             <td>
-                                {% autoescape off %} 
-                                    {{topic.content}}
-                                {% endautoescape %}
+                                {{topic.content|md}}
                             </td>
                         </tr>
                     </tbody>

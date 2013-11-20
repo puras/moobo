@@ -9,21 +9,21 @@ class TopicForm(forms.Form):
 
     def clean_title(self):
         title = self.cleaned_data['title']
-        if len(title) < 4:
+        if len(title.strip()) < 4:
             raise forms.ValidationError('内容过短')
         return title
 
     def clean_content(self):
         content = self.cleaned_data['content']
-        if len(content) < 4:
+        if len(content.strip()) < 4:
             raise forms.ValidationError('内容过短')
         return content
 
 class ReplyForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea(attrs={'cols': '100', 'rows': '10', 'placeholder': '回复内容'}))
-    
+
     def clean_content(self):
         content = self.cleaned_data['content']
-        if len(content) < 4:
+        if len(content.strip()) < 4:
             raise forms.ValidationError('内容过短')
         return content

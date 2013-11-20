@@ -12,6 +12,7 @@ from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
 
 from bbs.models import Topic, Node, Category, Reply
+from bbs.forms import TopicForm, ReplyForm
 
 # Create your views here.
 def index(req):
@@ -24,48 +25,46 @@ def index(req):
 
 def topic(req, topic_id):
     topic = get_object_or_404(Topic, pk = topic_id)
-    return render(req, 'topic.html', {'topic': topic})
+    reply_form = ReplyForm()
+    return render(req, 'topic.html', {'topic': topic, 'reply_form': reply_form})
 
-def topic_create(req):
-    category_id = req.POST.get('category_id', '')
-    node_id = req.POST.get('node_id', '')
-    return render(req, 'topic/create.html', {
-        'category_id': category_id,
-        'node_id': node_id
-        })
+def topic_create(req, node_id):
+    node = get_object_or_404(Node, pk = node_id)
+    if req.method == 'POST':
+        form = TopicForm(req.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            tp = Topic.objects.create(
+                title = cd['title'],
+                content = cd['content'],
+                author = req.user,
+                category = node.category,
+                node = node,
+                pub_date = datetime.now(),
+            )
+            tp.save()
+            return HttpResponseRedirect(reverse('bbs:topic', args = (tp.id, )))
+    else:
+        form = TopicForm()
 
-def topic_save(req):
-    # if req.method == 'POST':
-    title = req.POST.get('title', '')
-    content = req.POST.get('content', '')
-    category_id = req.POST.get('category_id', '')
-    node_id = req.POST.get('node_id')
-    tp = Topic.objects.create(
-        title = title,
-        content = content,
-        author = req.user,
-        category = Category.objects.get(pk = category_id),
-        node = Node.objects.get(pk = node_id),
-        pub_date = datetime.now(),
-    )
-    tp.save()
-    # return topic(req, tp.id)
-    return HttpResponseRedirect(reverse('bbs:topic', args = (tp.id, )))
-    # else:
-    #     return render(req, 'topic/create.html')
+    return render(req, 'topic/create.html', {'form': form })
 
 def topic_reply(req, topic_id):
     topic = get_object_or_404(Topic, pk = topic_id)
-    content = req.POST.get('content', '')
-    # topic_id = req.POST.get('topic_id')
-    re = Reply.objects.create(
-        content = content,
-        topic = topic,
-        author = req.user,
-        pub_date = datetime.now(),
-    )
-    re.save()
-    return HttpResponseRedirect(reverse('bbs:topic', args = (topic_id, )))
+    if req.method == 'POST':
+        form = ReplyForm(req.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            re = Reply.objects.create(
+                content = cd['content'],
+                topic = topic,
+                author = req.user,
+                pub_date = datetime.now(),
+            )
+            re.save()
+            return HttpResponseRedirect(reverse('bbs:topic', args = (topic_id, )))
+        else:
+            return render(req, 'topic.html', {'topic': topic, 'reply_form': form})
 
 
 def node(req, node_id):
@@ -83,23 +82,11 @@ def login(req):
         user = auth.authenticate(username = username, password = passwd)
         if user is not None and user.is_active:
             auth.login(req, user)
-            # return HttpResponse('You are logged in.')
             return HttpResponseRedirect('/')
         else:
             return render(req, 'login.html')
-            # return HttpResponse('You are not logged in.')
 
     return render(req, 'login.html')
-    # if req.method == 'POST':
-        # if req.session.test_cookie_worked():
-        #     req.session.delete_test_cookie()
-
-        #     return HttpResponse('You are logged in.')
-        # else:
-        #     return HttpResponse('Please enable cookies and try again.')
-
-    # req.session.set_test_cookie()
-    # return render(req, 'login.html')
 
 def logout(req):
     auth.logout(req)
@@ -114,14 +101,6 @@ def join(req):
     else:
         form = UserCreationForm()
         return render(req, 'join.html', { 'form': form, })
-    # if req.method == 'POST':
-    #     if req.session.test_cookie_worked():
-    #         return HttpResponse('You are sign up ok.')
-    #     else:
-    #         return HttpResponse('Please enable cookies and try again.')
-
-    # req.session.set_test_cookie()
-    # return render(req, 'join.html')
 
 def change_password(req):
     if req.method == 'POST':

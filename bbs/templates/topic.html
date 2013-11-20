@@ -55,19 +55,21 @@
     {% endfor %}
 {% endif %}
 {% if user.is_authenticated %}
+{% if reply_form.errors %}
+    {{ reply_form.errors }}
+{% endif %}
 <form action="{% url 'bbs:topic_reply' topic.id %}" method="POST">
     {% csrf_token %}
     <table>
         <tbody>
             <tr>
                 <td>
-                    <textarea id="content" name="content" cols="100" rows="10" placeholder="回复内容"></textarea>
+                    {{ reply_form.content }}
                 </td>
             </tr>
             <tr>
                 <td>
                     <input type="submit" />
-                    <input type="hidden" id="topic_id" name="topic_id" value="{{topic.id}}" />
                 </td>
             </tr>
         </tbody>

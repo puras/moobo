@@ -47,11 +47,6 @@ class Topic(models.Model):
         else:
             return None
 
-    # def save(self, *args, **kwargs):
-    #     import markdown
-    #     self.content = markdown.markdown(self.content)
-    #     super(Topic, self).save(*args, **kwargs)
-
 class Reply(models.Model):
     content = models.TextField('内容')
     topic = models.ForeignKey(Topic)

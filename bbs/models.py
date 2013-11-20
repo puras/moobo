@@ -53,5 +53,9 @@ class Reply(models.Model):
     author = models.ForeignKey(User)
     pub_date = models.DateTimeField('发布时间')
 
+    class Meta:
+        verbose_name = '回复'
+        verbose_name_plural = '回复'
+
     def __unicode__(self):
         return self.content

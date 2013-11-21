@@ -21,8 +21,8 @@
     <div class="inner tab_title"> <span class="gray"> {{topic.reply_count}} 回复 <!-- <strong class="snow">|</strong> 直到 2013-11-21 14:35:49 --> </span></div>
     {% if topic.reply_set.all %}
         {% for reply in topic.reply_set.all %}
-          <div class="cell"> <a href="#" class="user"></a>
-            <div class="fr"> <a href="#" class="reply_img"></a> <!-- <span class="no">1</span> --> </div>
+          <div class="cell" id="reply_{{forloop.counter}}"> <a href="#" class="user"></a>
+            <div class="fr"> <a href="#" class="reply_img" onclick="return reply_to('{{reply.author.username}}');" title="回复该层"></a> <!-- <span class="no">1</span> --> </div>
             <strong> <a class="dark" href="javascript:void(0);">{{reply.author.username}}</a> </strong> 
             <span class="small gray">{{reply.pub_date}}</span> <!-- <span class="small">♥ 2</span> -->
             <div class="sep5"></div>
@@ -50,4 +50,10 @@
         <h4>请先<a href="{% url 'bbs:login' %}">登录</a>或<a href="{% url 'bbs:join' %}">注册</a>后再进行回复</h4>
     {% endif %}
 </div>
+<script type="text/javascript">
+    function reply_to(username) {
+        kindeditor.insertHtml('@' + username + '  <br />');
+        return false;
+    }
+</script>
 {% endblock %}

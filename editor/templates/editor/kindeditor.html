@@ -1,5 +1,6 @@
 {% load staticfiles %}
 <script type="text/javascript">
+    var kindeditor;
     KindEditor.ready(function(K) {
         var options = {
             cssPath : ("{% static 'editor/kindeditor-4.1.9/themes/default/default.css' %}",
@@ -7,5 +8,6 @@
             filterMode : true
         };
         var editor = K.create('textarea[name="content"]', options);
+        kindeditor = editor;
     });                    
 </script>

@@ -1,7 +1,15 @@
 @charset "utf-8";
 /* CSS Document */
+#wrap {
+    height: auto !important;
+    margin-bottom: -80px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    min-height: 100%;
+}
 .content{
-    /*height: 82%;    */
+    margin-top: 70px;   
 }
 .navbar-inner{
     background-color: #F9F9F9;
@@ -68,7 +76,7 @@
     line-height: 200%;  
 }
 .node-item{
-    line-height: 120%;
+    line-height: 200%;
     padding-left: 10px; 
 }
 .node-item a{
@@ -156,7 +164,17 @@ a.balance_area:link, a.balance_area:visited, .balance_area {
 a.balance_area:hover{
     color: #000;
 }
-footer{
-    position: relative;
-    bottom: 0;  
+#footer {
+    background-color: #000;
+    font-size: 13px;
+    line-height: 35px;
 }
+#push, #footer {
+    height: 80px;
+}
+
+
+
+
+
+

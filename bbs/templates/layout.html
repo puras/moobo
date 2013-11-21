@@ -38,18 +38,17 @@
             </nav>
         </div>
     </header>
-    <p>
-        <br>
-        <br>
-        <br>
-    </p>
-    {% block body %}
-    {% endblock %}
+    <div id="wrap"> 
+        {% block body %}
+        {% endblock %}
+
+        <div id="push"></div>
+    </div>
     <div id="footer">
-      <div class="container">
-        <p class="text-muted credit"> 本论坛使用Python开发,使用django框架,前端页面样式使用bootstrap</p> 
-        <p class="text-muted credit">程序开发: <a href="#">Parus.He</a> | 页面开发: <a href="#">张雪</a> . </p>
-      </div>
+        <div class="container">
+            <p class="muted credit"> 本论坛使用Python开发,使用django框架,前端页面样式使用bootstrap</p>
+            <p class="muted credit">程序开发: <a href="#">Parus.He</a> | 页面开发: <a href="#">张雪</a></p>
+        </div>
     </div>
     <!-- Latest compiled and minified JavaScript --> 
     <script src="{% static 'js/lib/jquery-1.10.2.min.js' %}"></script> 

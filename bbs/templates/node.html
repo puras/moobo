@@ -3,23 +3,24 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="inner tab_title"><a href="{% url 'bbs' %}">MOOBO</a> &gt; <a href="javascript:void(0)">{{node.name}}</a></div>
-<br />
-{% if user.is_authenticated %}
-<a href="{% url 'bbs:topic_create' node.id %}">发布主题</a>
-{% endif %}
-<hr />
+<div class="box highlight">
+    <div class="inner tab_title"><a href="{% url 'bbs' %}">MOOBO</a> &gt; <a href="javascript:void(0)">{{node.name}}</a></div>
+    {% if user.is_authenticated %}
+    <a href="{% url 'bbs:topic_create' node.id %}">发布主题</a>
+    {% endif %}
 
-{% if topic_list %}
-    {% for topic in topic_list %}
-        <div class="cell item"> 
-            <span class="user"></span><h5><a href="{% url 'bbs:topic' topic.id %}">{{topic.title}}</a></h5>
-            <div class="info">
-                <a class="node" href="/go/programmer">{{topic.node.name}}</a>
-                <strong><a href="#">{{topic.author.username}}</a></strong> {{topic.pub_date}} 最后回复来自
-                <strong><a href="/member/Mutoo">Mutoo</a></strong>
+    {% if topic_list %}
+        {% for topic in topic_list %}
+            <div class="cell item"> 
+                <span class="user"></span>
+                <h5><a href="{% url 'bbs:topic' topic.id %}">{{topic.title}}</a></h5>
+                <div class="info">
+                    <a class="node" href="{% url 'bbs:node' topic.node.id %}">{{topic.node.name}}</a>
+                    <strong><a href="#">{{topic.author.username}}</a></strong> {{topic.pub_date}} 最后回复来自
+                    <strong><a href="#">{{topic.last_reply.author.username}}</a></strong>
+                </div>
             </div>
-        </div>
-    {% endfor %}
-{% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
 {% endblock %}

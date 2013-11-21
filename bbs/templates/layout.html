@@ -20,29 +20,31 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     </head>
     <body>
-    <header>
-      <nav class="navbar navbar-fixed-top">
-        <div class="navbar-inner"> <a href="{% url 'bbs' %}" class="brand"><span>MOOBO</span> </a>
-          <ul class="nav navbar-nav">
-            <li><a href="{% url 'bbs' %}">首页</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            {% if user.is_authenticated %}
-            <li><a href="javascript:void(0);">欢迎您， {{ user.username }}</a></li>
-            <li><a href="{% url 'bbs:password' %}">修改密码</a></li>
-            <li><a href="{% url 'bbs:logout' %}">注销</a></li>
-            {% else %}
-            <li><a href="{% url 'bbs:login' %}">登录</a></li>
-            <li><a href="{% url 'bbs:join' %}">注册</a></li>
-            {% endif %}
-          </ul>
+    <header class="navbar navbar-fixed-top bs-docs-nav navbar-inner" role="banner">
+        <div class="container">
+            <div class="navbar-header"> <a href="{% url 'bbs' %}" class="navbar-brand"><span>MOOBO</span> </a></div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'bbs' %}">首页</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="javascript:void(0);">欢迎您， {{ user.username }}</a></li>
+                    <li><a href="{% url 'bbs:password' %}">修改密码</a></li>
+                    <li><a href="{% url 'bbs:logout' %}">注销</a></li>
+                    {% else %}
+                    <li><a href="{% url 'bbs:login' %}">登录</a></li>
+                    <li><a href="{% url 'bbs:join' %}">注册</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
         </div>
-      </nav>
     </header>
-
+    <p>
+        <br>
+        <br>
+        <br>
+    </p>
     {% block body %}
     {% endblock %}
-
     <div id="footer">
       <div class="container">
         <p class="text-muted credit"> 本论坛使用Python开发,使用django框架,前端页面样式使用bootstrap</p> 

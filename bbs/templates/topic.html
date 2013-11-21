@@ -4,78 +4,58 @@
 {% load moobo_tags %}
 
 {% block content %}
-<div class="box-title"><a href="{% url 'bbs' %}">MOOBO</a> > <a href="{% url 'bbs:node' topic.node.id %}">{{ topic.node.name }}</a></div>
-<table>
-    <tbody>
-        <tr>
-            <td width="48px;"><img src="{% static 'img/pet.png' %}"></td>
-            <td style="padding: 0; margin: 0;">
-                <table cellpadding="0" cellspacing="0" style="padding: 0; margin: 0;">
-                    <tbody>
-                        <tr style="padding: 0; margin: 0;">
-                            <td style="padding: 0; margin: 0;"><a href="{% url 'bbs:topic' topic.id %}"><span class="topic-title">{{topic.title}}</span></a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <table border="1">
-                                    <tbody>
-                                        <tr>
-                                            <td><small>{{topic.node.name}}</small></td>
-                                            <td><small>{{topic.node.category.name}}</small></td>
-                                            <td><small>创建人</small></td>
-                                            <td><small>{{topic.pub_date}}</small></td>
-                                            <td><small>最后回复人</small></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr/>
-                            <td>
-                                {{topic.content|md}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<br />
-<div class="box-title">回复</div>
-{% if topic.reply_set.all %}
-    {% for reply in topic.reply_set.all %}
-        <div class="cell item"> 
-            <span class="user"></span><h5>{{reply.author.username}}说:</h5>
-            <div class="info">
-                回复时间: {{reply.pub_date}}
-            </div>
-            <h5>{{reply.content|md}}</h5>
+<div class="box highlight">
+    <div class="inner tab_title"><a href="{% url 'bbs' %}">MOOBO</a> > <a href="{% url 'bbs:node' topic.node.id %}">{{ topic.node.name }}</a></div>
+    <div class="cell item"> 
+        <span class="user"></span>
+        <h5><a href="{% url 'bbs:topic' topic.id %}">{{topic.title}}</a></h5>
+        <div class="info">
+            <a class="node" href="{% url 'bbs:node' topic.node.id %}">{{topic.node.name}}</a>
+            <strong><a href="#">{{topic.author.username}}</a></strong> {{topic.pub_date}}
         </div>
-    {% endfor %}
-{% endif %}
-{% if user.is_authenticated %}
-{% if reply_form.errors %}
-    {{ reply_form.errors }}
-{% endif %}
-<form action="{% url 'bbs:topic_reply' topic.id %}" method="POST">
-    {% csrf_token %}
-    <table>
-        <tbody>
-            <tr>
-                <td>
-                    {{ reply_form.content }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" />
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</form>
-{% else %}
-<h4>请先<a href="{% url 'bbs:login' %}">登录</a>或<a href="{% url 'bbs:join' %}">注册</a>后再进行回复</h4>
-{% endif %}
+        <hr />
+        {{topic.content|md}}
+    </div>
+</div>
+<div class="box">
+    <div class="inner tab_title"> <a href="#">回复</a><!-- <a href="#" class="text-right">浏览全部节点</a> --></div>
+    {% if topic.reply_set.all %}
+        {% for reply in topic.reply_set.all %}
+            <div class="cell item"> 
+                <span class="user"></span><h5>{{reply.author.username}}说:</h5>
+                <div class="info">
+                    回复时间: {{reply.pub_date}}
+                </div>
+                <hr />
+                {{reply.content|md}}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+<div class="box">
+    {% if user.is_authenticated %}
+        {% if reply_form.errors %}
+            {{ reply_form.errors }}
+        {% endif %}
+        <form action="{% url 'bbs:topic_reply' topic.id %}" method="POST">
+            {% csrf_token %}
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            {{ reply_form.content }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    {% else %}
+        <h4>请先<a href="{% url 'bbs:login' %}">登录</a>或<a href="{% url 'bbs:join' %}">注册</a>后再进行回复</h4>
+    {% endif %}
+</div>
 {% endblock %}

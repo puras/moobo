@@ -16,7 +16,9 @@
                 <h5><a href="{% url 'bbs:topic' topic.id %}">{{topic.title}}</a></h5>
                 <div class="info">
                     <a class="node" href="{% url 'bbs:node' topic.node.id %}">{{topic.node.name}}</a>
-                    <strong><a href="#">{{topic.author.username}}</a></strong> {{topic.pub_date}} 最后回复来自
+                    <strong><a href="#">{{topic.author.username}}</a></strong> {{topic.pub_date}} 
+                    <strong>{{topic.reply_count}}</strong> 回复
+                    最后回复来自
                     <strong><a href="#">{{topic.last_reply.author.username}}</a></strong>
                 </div>
             </div>

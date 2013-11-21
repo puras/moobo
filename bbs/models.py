@@ -47,6 +47,9 @@ class Topic(models.Model):
         else:
             return None
 
+    def reply_count(self):
+        return len(self.reply_set.all())
+
 class Reply(models.Model):
     content = models.TextField('内容')
     topic = models.ForeignKey(Topic)

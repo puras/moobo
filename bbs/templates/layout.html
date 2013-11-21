@@ -18,6 +18,17 @@
 
         <!-- style CSS -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+        <link href="{% static 'editor/kindeditor-4.1.9/themes/default/default.css' %}" type="text/css" media="all" rel="stylesheet" />
+        <link href="{% static 'editor/kindeditor-4.1.9/plugins/code/prettify.css' %}" type="text/css" media="all" rel="stylesheet" />
+
+        
+        <!-- Latest compiled and minified JavaScript --> 
+        <script src="{% static 'js/lib/jquery-1.10.2.min.js' %}"></script> 
+        <script src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'editor/kindeditor-4.1.9/kindeditor.js' %}"></script>
+        <script type="text/javascript" src="{% static 'editor/kindeditor-4.1.9/plugins/code/prettify.js' %}"></script>
     </head>
     <body>
     <header class="navbar navbar-fixed-top bs-docs-nav navbar-inner" role="banner">
@@ -50,8 +61,5 @@
             <p class="muted credit">程序开发: <a href="#">Parus.He</a> | 页面开发: <a href="#">张雪</a></p>
         </div>
     </div>
-    <!-- Latest compiled and minified JavaScript --> 
-    <script src="{% static 'js/lib/jquery-1.10.2.min.js' %}"></script> 
-    <script src="{% static 'js/lib/bootstrap.min.js' %}"></script>
     </body>
 </html>

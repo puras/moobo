@@ -23,7 +23,7 @@ class TopicForm(forms.Form):
 
 class ReplyForm(forms.Form):
     # content = forms.CharField(widget=forms.Textarea(attrs={'cols': '90', 'rows': '10', 'placeholder': '回复内容'}))
-    content = forms.CharField(widget=KindEditor(attrs={'cols': '90', 'rows': '10', 'placeholder': '回复内容'}))
+    content = forms.CharField(widget=KindEditor(attrs={'class': 'form-control highlight', 'rows': '3', 'placeholder': '回复内容'}))
 
     def clean_content(self):
         content = self.cleaned_data['content']

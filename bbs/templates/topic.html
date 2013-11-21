@@ -5,54 +5,46 @@
 
 {% block content %}
 <div class="box highlight">
-    <div class="inner tab_title"><a href="{% url 'bbs' %}">MOOBO</a> > <a href="{% url 'bbs:node' topic.node.id %}">{{ topic.node.name }}</a></div>
-    <div class="cell item"> 
-        <span class="user"></span>
-        <h5><a href="{% url 'bbs:topic' topic.id %}">{{topic.title}}</a></h5>
-        <div class="info">
-            <a class="node" href="{% url 'bbs:node' topic.node.id %}">{{topic.node.name}}</a>
-            <strong><a href="#">{{topic.author.username}}</a></strong> {{topic.pub_date}}
+    <div class="inner tab_title"> <a href="{% url 'bbs' %}">MOOBO</a> > <a href="{% url 'bbs:node' topic.node.id %}">{{ topic.node.name }}</a></div>
+    <div class="content_title"> 
+        <a href="#" class="user fr"></a>
+        <h3>{{topic.title}}</h3>
+        <small class="gray"> By <a href="javascript:void(0);">{{topic.author.username}}</a> · {{topic.pub_date}} · <!-- 1752 次点击 --> </small> 
+    </div>
+    <div class="cell">
+        <div class="topic_content"> 
+            {{topic.content|md}}
         </div>
-        <hr />
-        {{topic.content|md}}
     </div>
 </div>
-<div class="box">
-    <div class="inner tab_title"> <a href="#">回复</a><!-- <a href="#" class="text-right">浏览全部节点</a> --></div>
+<div class="box highlight">
+    <div class="inner tab_title"> <span class="gray"> {{topic.reply_count}} 回复 <!-- <strong class="snow">|</strong> 直到 2013-11-21 14:35:49 --> </span></div>
     {% if topic.reply_set.all %}
         {% for reply in topic.reply_set.all %}
-            <div class="cell item"> 
-                <span class="user"></span><h5>{{reply.author.username}}说:</h5>
-                <div class="info">
-                    回复时间: {{reply.pub_date}}
-                </div>
-                <hr />
+          <div class="cell"> <a href="#" class="user"></a>
+            <div class="fr"> <a href="#" class="reply_img"></a> <!-- <span class="no">1</span> --> </div>
+            <strong> <a class="dark" href="javascript:void(0);">{{reply.author.username}}</a> </strong> 
+            <span class="small gray">{{reply.pub_date}}</span> <!-- <span class="small">♥ 2</span> -->
+            <div class="sep5"></div>
+            <div class="reply_content">
                 {{reply.content|md}}
             </div>
+          </div>
         {% endfor %}
     {% endif %}
 </div>
-<div class="box">
+<div class="box ">
+    <div class="inner tab_title"> 添加一条新回复<a href="javascrip:void(0);" class="fr">回到顶部</a></div>
     {% if user.is_authenticated %}
         {% if reply_form.errors %}
             {{ reply_form.errors }}
         {% endif %}
         <form action="{% url 'bbs:topic_reply' topic.id %}" method="POST">
+        <div class="cell item">
             {% csrf_token %}
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            {{ reply_form.content }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="submit" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            {{ reply_form.content }}
+            <button type="submit" class="btn btn-primary">提交</button>
+        </div>
         </form>
     {% else %}
         <h4>请先<a href="{% url 'bbs:login' %}">登录</a>或<a href="{% url 'bbs:join' %}">注册</a>后再进行回复</h4>

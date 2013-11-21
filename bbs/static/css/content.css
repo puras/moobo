@@ -203,7 +203,39 @@ a.count_livid:link, a.count_livid:active {
     margin-right: 5px;
     padding: 2px 10px;
 }
-
+.gray {
+    color: #999;
+}
+.content_title{
+    padding: 10px;
+    border-bottom: 1px dashed #CCC; 
+}
+.reply_content{
+    padding-left: 10px; 
+}
+.reply_content, .topic_content {
+    color: #000000;
+    font-size: 14px;
+    line-height: 180%;
+    overflow: hidden;
+}
+.reply_img{
+    background: url(../img/reply.png) no-repeat;
+    height: 16px;
+    width: 20px;
+    float: left;
+    margin-right: 15px;
+}
+.no {
+    background-color: #F0F0F0;
+    border-radius: 10px;
+    color: #CCCCCC;
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 9px;
+    padding: 2px 5px;
+}
 #footer {
     background-color: #000;
     font-size: 13px;

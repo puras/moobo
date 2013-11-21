@@ -11,13 +11,13 @@ html,body {
     height: 100%
 }
 ul, li {
-    list-style: none;
-    height: auto;
+    /*list-style: none;*/
+    /*height: auto;
     padding: 0;
     margin: 0;
-    border: none;
-    list-style: none;
-    display: block;
+    border: none;*/
+    /*list-style: none;*/
+    /*display: block;*/
 }
 form {
     margin: 0;
@@ -40,11 +40,11 @@ input{
     padding: 0;
 }
 ul, ol {
-    list-style-image: none;
+    /*list-style-image: none;
     list-style-position: outside;
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 0;*/
 }
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, input, textarea, p, th, td {
     margin: 0;

@@ -49,6 +49,7 @@
     border-radius: 3px;
     border-bottom: 2px solid #E2E2E9;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    margin-bottom: 10px;
 }
 .item {
     background: url(../img/bg_item.png) repeat-x;
@@ -86,6 +87,7 @@
 .info{
     font-size:12px; 
     color: #B4B4B4;
+    float:left;
 }
 .info a{
     margin-right: 10px
@@ -164,6 +166,44 @@ a.balance_area:link, a.balance_area:visited, .balance_area {
 a.balance_area:hover{
     color: #000;
 }
+a.count_livid{
+    border-radius: 15px;
+    background: #699cb1;    
+    display: inline-block;
+    line-height: 12px;
+    padding: 2px 10px;
+    color: #fff;
+    float: right;
+    font-weight: bold;
+    margin-top: -6px;
+}
+a.count_livid:hover {
+    -moz-text-decoration-color: -moz-use-text-color;
+    -moz-text-decoration-line: none;
+    -moz-text-decoration-style: solid;
+    background-color: #969c61;
+    border-radius: 12px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 12px;
+    margin-right: 5px;
+    padding: 2px 10px;
+}
+a.count_livid:link, a.count_livid:active {
+    -moz-text-decoration-color: -moz-use-text-color;
+    -moz-text-decoration-line: none;
+    -moz-text-decoration-style: solid;
+    background-color: #AAB0C6;
+    border-radius: 12px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 12px;
+    margin-right: 5px;
+    padding: 2px 10px;
+}
+
 #footer {
     background-color: #000;
     font-size: 13px;

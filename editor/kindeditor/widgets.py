@@ -18,6 +18,7 @@ class KindEditor(forms.Textarea):
         js = (
             "%seditor/kindeditor-4.1.9/kindeditor.js" % settings.MEDIA_URL,
             settings.MEDIA_URL + 'editor/kindeditor-4.1.9/plugins/code/prettify.js',
+            settings.MEDIA_URL + 'editor/kindeditor_init.js',
             )
 
     def __init(self, attrs = {}):
